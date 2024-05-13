@@ -2,9 +2,10 @@ import { categoryType } from "./categoryType"
 import { userType } from "./userType"
 
 export type articleType = {
-    id: number,
+    id: string,
     title: string,
     category: categoryType,
+    content: string,
     registerUser: userType,
-    registerDate: Date
+    registerDate: string
 }
