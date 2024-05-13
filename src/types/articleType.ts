@@ -7,5 +7,7 @@ export type articleType = {
     category: categoryType,
     content: string,
     registerUser: userType,
-    registerDate: string
+    registerDate: string,
+    updateUser: userType,
+    updateDate: string
 }
