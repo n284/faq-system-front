@@ -3,27 +3,28 @@ import { ChangeEvent, useState } from "react";
 import { userType } from "../../types/userType";
 import { categoryType } from "../../types/categoryType";
 import { pageType } from "./types/pageType";
+import { articleType } from "../../types/articleType";
 
 export function FAQList() {
     function createData(num: number) {
         return Array(num).fill(null).map((_, i) => {
-            const id = i;
+            const articleId = `${i}`;
             const title = `タイトル${i}`;
             const category = {
-                categoryId: i % 10,
+                categoryId: `${i % 10}`,
                 categoryName: `カテゴリ${i % 10}`
             } as categoryType;
             const registerUser = {
                 userId: `ユーザー${i % 10}`
             } as userType;
-            const registerDate = new Date(`2024/05/${i % 32 === 0 ? 1 : i % 32}`);
+            const registerDate = `2024/05/${i % 32 === 0 ? 1 : i % 32}`;
             return {
-                id,
+                articleId,
                 title,
                 category,
                 registerUser,
                 registerDate
-            };
+            } as articleType;
         });
     }
 
@@ -62,12 +63,12 @@ export function FAQList() {
                         <TableBody>
                             {page.data.map((data, index) => {
                                 return (
-                                    <TableRow key={data.id}>
+                                    <TableRow key={data.articleId}>
                                         <TableCell align="center"><Link href="#">{(page.pageNumber - 1) * 10 + index + 1}</Link></TableCell>
                                         <TableCell align="left">{data.title}</TableCell>
                                         <TableCell align="center">{data.category.categoryName}</TableCell>
                                         <TableCell align="center">{data.registerUser.userId}</TableCell>
-                                        <TableCell align="center">{data.registerDate.toLocaleDateString()}</TableCell>
+                                        <TableCell align="center">{data.registerDate}</TableCell>
                                     </TableRow>
                                 );
                             })}
