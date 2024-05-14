@@ -1,6 +1,7 @@
 import { Box, Button, FormControl, Link, TextField, Typography } from "@mui/material";
-import { useState, FocusEvent } from "react";
+import { useState, FocusEvent, MouseEvent } from "react";
 import { loginFormType } from "./types/loginFormType";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
     const [isActive, setIsActive] = useState<boolean>(false);
@@ -9,6 +10,11 @@ export function Login() {
         userId: "",
         password: ""
     });
+    const navigate = useNavigate();
+
+    const stepFAQList = (event: MouseEvent<HTMLButtonElement>) => {
+        navigate("/faq-list");
+    };
 
     const inputUserIdHandler = (event: FocusEvent<HTMLInputElement>) => {
         const currentLoginForm = {
@@ -41,7 +47,7 @@ export function Login() {
                 </FormControl>
             </Box>
             <Box textAlign="center">
-                <Button variant="contained" sx={{ margin: 2, width: 200, height: 50 }} disabled={!isActive}>ログイン</Button>
+                <Button variant="contained" sx={{ margin: 2, width: 200, height: 50 }} disabled={!isActive} onClick={stepFAQList}>ログイン</Button>
             </Box>
             <Box textAlign="center">
                 <Link href="#" sx={{ margin: 2 }} >パスワードを忘れた方はこちら</Link>
