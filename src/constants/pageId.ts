@@ -21,8 +21,9 @@ export const FAQ_REGISTER_PID = "FAQ_0002";
 export const FAQ_REGISTER_CONFIRM_PID = "FAQ_0003";
 export const FAQ_REGISTER_COMPLETE_PID = "FAQ_0004";
 export const FAQ_DETAIL_PID = "FAQ_0005";
-export const FAQ_UPDATE_CONFIRM_PID = "FAQ_0006";
-export const FAQ_UPDATE_COMPLETE_PID = "FAQ_0007";
-export const FAQ_DELETE_CONFIRM_PID = "FAQ_0008";
-export const FAQ_DELETE_COMPLETE_PID = "FAQ_0009";
+export const FAQ_UPDATE_PID = "FAQ_0006";
+export const FAQ_UPDATE_CONFIRM_PID = "FAQ_0007";
+export const FAQ_UPDATE_COMPLETE_PID = "FAQ_0008";
+export const FAQ_DELETE_CONFIRM_PID = "FAQ_0009";
+export const FAQ_DELETE_COMPLETE_PID = "FAQ_0010";
 

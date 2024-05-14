@@ -2,7 +2,7 @@ import { categoryType } from "./categoryType"
 import { userType } from "./userType"
 
 export type articleType = {
-    id: string,
+    articleId: string,
     title: string,
     category: categoryType,
     content: string,
