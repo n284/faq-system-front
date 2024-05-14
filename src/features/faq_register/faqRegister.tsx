@@ -1,5 +1,5 @@
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, Stack, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import { useState, FocusEvent } from "react";
 import { articleType } from "../../types/articleType";
 import { categoryType } from "../../types/categoryType";
 
@@ -21,17 +21,39 @@ export function FAQRegister({ isConfirm }: props) {
             categoryId: "",
             categoryName: ""
         } as categoryType,
-        content: "",
+        content: ""
     } as articleType);
 
+    const [isActive, setIsActive] = useState<boolean>(false);
+
     const selectCategory = (event: SelectChangeEvent) => {
-        setArticleForm({
+        const form = {
             ...articleForm,
             category: {
                 ...articleForm.category,
                 categoryId: event.target.value
             }
-        });
+        };
+        setArticleForm(form);
+        setIsActive(!!form.title && !!form.category.categoryId && !!form.content);
+    };
+
+    const changeTitle = (event: FocusEvent<HTMLInputElement>) => {
+        const form = {
+            ...articleForm,
+            title: event.currentTarget.value
+        };
+        setArticleForm(form);
+        setIsActive(!!form.title && !!form.category.categoryId && !!form.content);
+    };
+
+    const changeContent = (event: FocusEvent<HTMLInputElement>) => {
+        const form = {
+            ...articleForm,
+            content: event.currentTarget.value
+        };
+        setArticleForm(form);
+        setIsActive(!!form.title && !!form.category.categoryId && !!form.content);
     };
 
     return (
@@ -42,7 +64,7 @@ export function FAQRegister({ isConfirm }: props) {
             </Box>
             <Box sx={{ width: "70%", maxWidth: 1000, margin: "auto" }}>
                 <Stack direction="column" spacing={5} justifyContent="center">
-                    <TextField type="text" inputProps={{ maxLength: 50 }} label="タイトル" variant="filled" disabled={isConfirm} />
+                    <TextField type="text" inputProps={{ maxLength: 50 }} label="タイトル" variant="filled" disabled={isConfirm} onBlur={changeTitle} />
                     <FormControl variant="filled" sx={{ width: 200 }} disabled={isConfirm}>
                         <InputLabel id="category-selector">カテゴリー</InputLabel>
                         <Select labelId="category-selector" value={articleForm.category.categoryId} onChange={selectCategory}>
@@ -54,14 +76,14 @@ export function FAQRegister({ isConfirm }: props) {
                             })}
                         </Select>
                     </FormControl>
-                    <TextField type="text" label="本文" variant="filled" multiline rows={25} disabled={isConfirm} />
+                    <TextField type="text" label="本文" variant="filled" multiline rows={25} disabled={isConfirm} onBlur={changeContent} />
                 </Stack>
             </Box>
             <Box sx={{ margin: "auto" }}>
                 <Stack direction="row" spacing={5} sx={{ margin: 7 }} justifyContent="center">
                     {!isConfirm && <Button variant="contained" sx={{ width: 200 }}>FAQ一覧に戻る</Button>}
                     {isConfirm && <Button variant="contained" sx={{ width: 200 }}>入力に戻る</Button>}
-                    {!isConfirm && <Button variant="contained" sx={{ width: 200 }}>次へ</Button>}
+                    {!isConfirm && <Button variant="contained" sx={{ width: 200 }} disabled={!isActive}>次へ</Button>}
                     {isConfirm && <Button variant="contained" sx={{ width: 200 }}>投稿</Button>}
                 </Stack>
             </Box>
