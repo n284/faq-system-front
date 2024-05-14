@@ -63,7 +63,7 @@ export function FAQList() {
                         <TableBody>
                             {page.data.map((data, index) => {
                                 return (
-                                    <TableRow key={data.id}>
+                                    <TableRow key={data.articleId}>
                                         <TableCell align="center"><Link href="#">{(page.pageNumber - 1) * 10 + index + 1}</Link></TableCell>
                                         <TableCell align="left">{data.title}</TableCell>
                                         <TableCell align="center">{data.category.categoryName}</TableCell>
