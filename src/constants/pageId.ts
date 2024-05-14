@@ -9,7 +9,13 @@ export const RESET_PW_PID = "COMMON_0005";
 export const RESET_PW_COMPLETE_PID = "COMMON_0006";
 
 //エラー系
-export const TIMEOUT_PID = "ERROR_0001";
+export const BAD_REQUEST_PID = "ERROR_0001";
+export const UNAUTHORIZED_PID = "ERROR_0002";
+export const FORBIDDEN_PID = "ERROR_0003";
+export const NOT_FOUND_PID = "ERROR_0004";
+export const METHOD_NOT_ALLOWED_PID = "ERROR_0005";
+export const TIMEOUT_PID = "ERROR_0006";
+export const INTERNAL_SERVER_ERROR = "ERROR_0007";
 
 //ユーザー
 export const USER_REGISTER_PID = "USER_0001";
@@ -26,4 +32,3 @@ export const FAQ_UPDATE_CONFIRM_PID = "FAQ_0007";
 export const FAQ_UPDATE_COMPLETE_PID = "FAQ_0008";
 export const FAQ_DELETE_CONFIRM_PID = "FAQ_0009";
 export const FAQ_DELETE_COMPLETE_PID = "FAQ_0010";
-
